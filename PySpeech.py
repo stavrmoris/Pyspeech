@@ -4,6 +4,7 @@ import subprocess
 import pyttsx3
 
 
+
 hello = ['привет',  'здравствуйте',  'добрый день',  'доброе утро',  'добрый вечер' 'хай' 'хэй']
 hello_answer = ['Привет',  'Здравствуйте',  'Доброго времени суток']
 How_are_you = ['как дела', 'как делишки', 'как делишки ']
@@ -16,24 +17,24 @@ engine = pyttsx3.init()
 
 def command():
 	task = input()
+	x = 0
+	for i in range(len(hello)):
+		if(hello[i] in task):
+			engine.say(random.choice(hello_answer))
+			x = 1
+	
+	for i in range(len(How_are_you)):
+		if(How_are_you[i] in task):
+			engine.say(random.choice(How_are_you_answer))
+			x = 1
 
-	if(task in hello):
-		engine.say(random.choice(hello_answer))
-	elif(task in How_are_you):
-		engine.say(random.choice(How_are_you_answer))
-	elif(task in date_now):
-		engine.say(datetime.date.today())
-	elif(task in what_are_you_doing):
-		print(random.choice(what_are_you_doing_answer))
-	elif(task == "какой твой любимый цвет?"):
-		engine.say('Мне нравятся голубой, как небо!')
-	elif(task == "как тебя зовут?"):
-		engine.say('Александра')
-	elif(task == "какой твой любимый напиток?"):
-		engine.say('Мне нравится Фруктовый коктель со льдом')
-	elif(task == "Открой firefox"):
-		subprocess.Popen('C:/Program Files/Mozilla Firefox/firefox.exe')
-	else:
+	for i in range(len(date_now)):
+		if(date_now[i] in task):
+			engine.say(random.choice(hello_answer))
+			x = 1
+
+
+	if(x == 0):
 		engine.say('I hate people')
 	engine.runAndWait()
 
