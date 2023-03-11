@@ -1,7 +1,12 @@
 import random
+
+from datetime import datetime
 from Answers import *
 from Sounding_the_answer import text_in_audio
 from Speech_recognition import *
+
+now = datetime.now() 
+current_time = now.strftime("%H:%M:%S:%x")
 
 def command(task):
 	#task = input()
@@ -18,7 +23,8 @@ def command(task):
 
 	for i in range(len(date_now)):
 		if(date_now[i] in task):
-			text_in_audio(random.choice(hello_answer))
+			text_in_audio("Сейчас: ")
+			text_in_audio(current_time)
 			x = 1
 
 
