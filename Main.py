@@ -1,9 +1,10 @@
 import random
 from Answers import *
 from Sounding_the_answer import text_in_audio
+from Speech_recognition import *
 
-def command():
-	task = input()
+def command(task):
+	#task = input()
 	x = 0
 	for i in range(len(hello)): #Перебираем все элементы списка hello
 		if(hello[i] in task): #И если элемент из списка hello попадется
@@ -22,7 +23,7 @@ def command():
 
 
 	if(x == 0):
-		text_in_audio('Не понимаю.')
+		text_in_audio('Я пока что не понимаю, что вы мне говорите.')
 
 while True:
-	command()
+	command(recognition())
