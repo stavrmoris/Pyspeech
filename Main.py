@@ -21,6 +21,11 @@ def command(task):
 			text_in_audio(random.choice(How_are_you_answer))
 			x = 1
 
+	for i in range(len(what_are_you_doing)):
+		if(what_are_you_doing[i] in task):
+			text_in_audio(random.choice(what_are_you_doing_answer))
+			x = 1
+
 	for i in range(len(date_now)):
 		if(date_now[i] in task):
 			text_in_audio("Сейчас: ")
