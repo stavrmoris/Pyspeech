@@ -1,5 +1,7 @@
 import random
 import webbrowser
+import runpy
+import sys
 
 from datetime import datetime
 from Answers import *
@@ -9,8 +11,9 @@ from Speech_recognition import *
 now = datetime.now() 
 current_time = now.strftime("%H:%M:%S:%x")
 
-def command():
-	task = input()
+def command(task):
+#def command():
+	#task = input()
 	x = 0
 	for i in range(len(hello)): #Перебираем все элементы списка hello
 		if(hello[i] in task): #И если элемент из списка hello попадется
@@ -34,7 +37,6 @@ def command():
 			x = 1
 
 	for i in range(len(search_in_google)):
-		search_text = []
 		if(search_in_google[i] in task):
 			edit_string_as_list = task.split()
 			final_list = [word for word in edit_string_as_list if word not in search_in_google]
@@ -45,7 +47,6 @@ def command():
 			x = 1
 
 	for i in range(len(search_in_yandex)):
-		search_text = []
 		if(search_in_yandex[i] in task):
 			edit_string_as_list = task.split()
 			final_list = [word for word in edit_string_as_list if word not in search_in_yandex]
@@ -55,10 +56,16 @@ def command():
 			webbrowser.open(url, new=0, autoraise=True)
 			x = 1
 
-#webbrowser.open(url, new=0, autoraise=True)
+	for i in range(len(play_in_cities)):
+		if(play_in_cities[i] in task):
+			text_in_audio(random.choice(play_in_cities_answer))
+			runpy.run_module(mod_name="Cities_game")
+			sys.exit()
+			x = 1
+
 	if(x == 0):
 		text_in_audio('Я пока что не понимаю, что вы мне говорите.')
 
 while True:
-	#command(recognition())
-	command()
+	command(recognition())
+	#command()
