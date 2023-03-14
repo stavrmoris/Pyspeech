@@ -35,7 +35,7 @@ while game_over == False:
   
         correct = False
         while correct == False:
-            print("Введите ваш город: на букву: ", s_end)
+            text_in_audio(f"Введите ваш город: на букву: {s_end}")
             task = recognition()
             city = task.capitalize()
             print(city)
@@ -49,7 +49,7 @@ while game_over == False:
                 #Проверить что город на нужную букву
                 if city[0].lower () != s_end:
                     correct = False
-                    print("Не верно. Назовите город на букву", s_end)
+                    text_in_audio(f"Не верно. Назовите город на букву {s_end}")
   
                 #Проверить что такой город существует
                 if city in set(cityes_all):
@@ -73,7 +73,7 @@ while game_over == False:
   
         if city == '':
             text_in_audio('Вы победили')
-            print('Не найден город на букву', s_end)
+            text_in_audio('Не найден город на букву {s_end}')
             game_over = True
         else:
             print(city)
@@ -96,6 +96,6 @@ while game_over == False:
           
 
 
-
-text_in_audio('Игра окончена')
-print('Назвали ' + len(cityes_old) + " городов из " + len(cityes_all))
+text_in_audio
+('Игра окончена')
+text_in_audio(f'Назвали {len(cityes_old)} городов из {len(cityes_all)}')
